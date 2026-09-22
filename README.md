@@ -8,11 +8,11 @@ The objective is to classify land cover in the Sarbagita Agglomeration area and 
 
 The study area covers:
 
-- Denpasar
-- Badung
-- Gianyar
-- Tabanan
-- Bali, Indonesia
+* Denpasar
+* Badung
+* Gianyar
+* Tabanan
+* Bali, Indonesia
 
 The analysis uses RGB raster imagery for 2020 and 2023, training samples, Random Forest classification, transition probability analysis, Markov-based projection, and spatial allocation based on neighborhood suitability.
 
@@ -20,13 +20,13 @@ The analysis uses RGB raster imagery for 2020 and 2023, training samples, Random
 
 ## 2. Land-Cover Classes
 
-| Class Value | Land-Cover Class |
-|-------------:|------------------|
-| 1 | Pemukiman atau Lahan Terbangun |
-| 21 | Lahan Kosong |
-| 35 | Tubuh Air |
-| 40 | Pertanian |
-| 56 | Vegetasi |
+| Class Value | Land-Cover Class               |
+| ----------: | ------------------------------ |
+|           1 | Pemukiman atau Lahan Terbangun |
+|          21 | Lahan Kosong                   |
+|          35 | Tubuh Air                      |
+|          40 | Pertanian                      |
+|          56 | Vegetasi                       |
 
 ---
 
@@ -34,16 +34,16 @@ The analysis uses RGB raster imagery for 2020 and 2023, training samples, Random
 
 ### Raster Data
 
-- `Sarbagita_2020.tif`
-- `Sarbagita_2023.tif`
+* `Sarbagita_2020.tif`
+* `Sarbagita_2023.tif`
 
 Raster characteristics:
 
-- CRS: EPSG:4326
-- Spatial resolution: approximately 8.98e-05 degrees
-- 3 bands
-- RGB data
-- Data type: uint8
+* CRS: EPSG:4326
+* Spatial resolution: approximately 8.98e-05 degrees
+* 3 bands
+* RGB data
+* Data type: uint8
 
 ### Training Data
 
@@ -59,9 +59,9 @@ Training polygons were overlaid with the raster imagery to extract RGB pixel val
 
 The predictors used in the classification were:
 
-- Red
-- Green
-- Blue
+* Red
+* Green
+* Blue
 
 The supplied raster contains RGB bands only. Therefore, multispectral indices such as NDVI or NDWI were not calculated.
 
@@ -71,20 +71,20 @@ Random Forest was used independently for the 2020 and 2023 classifications.
 
 Model configuration:
 
-- Number of trees: 200
-- Random state: 42
-- Class weighting: balanced
-- Validation split: 20%
-- Stratified sampling
+* Number of trees: 200
+* Random state: 42
+* Class weighting: balanced
+* Validation split: 20%
+* Stratified sampling
 
 ### 4.3 Accuracy Assessment
 
 Model performance was evaluated using:
 
-- Overall Accuracy
-- Cohen's Kappa
-- Producer's Accuracy
-- User's Accuracy
+* Overall Accuracy
+* Cohen's Kappa
+* Producer's Accuracy
+* User's Accuracy
 
 ### 4.4 Land-Cover Transition Analysis
 
@@ -111,56 +111,102 @@ The allocation procedure:
 
 ## 5. Accuracy Results
 
-| Metric | 2020 | 2023 |
-|--------|-----:|-----:|
+| Metric           |   2020 |   2023 |
+| ---------------- | -----: | -----: |
 | Overall Accuracy | 93.28% | 89.55% |
-| Cohen's Kappa | 0.9020 | 0.8477 |
+| Cohen's Kappa    | 0.9020 | 0.8477 |
 
 ### Class-Level Accuracy
 
-| Class | Producer's Accuracy 2020 | User's Accuracy 2020 | Producer's Accuracy 2023 | User's Accuracy 2023 |
-|-------|-------------------------:|----------------------:|-------------------------:|----------------------:|
-| Pemukiman atau Lahan Terbangun | 89.61% | 90.23% | 88.32% | 87.77% |\n| Lahan Kosong | 72.99% | 74.70% | 50.55% | 52.66% |\n| Tubuh Air | 89.10% | 73.75% | 97.82% | 95.96% |\n| Pertanian | 93.35% | 92.45% | 88.03% | 86.77% |\n| Vegetasi | 98.28% | 98.89% | 97.15% | 97.77% |\n
+| Class                          | Producer's Accuracy 2020 | User's Accuracy 2020 | Producer's Accuracy 2023 | User's Accuracy 2023 |
+| ------------------------------ | -----------------------: | -------------------: | -----------------------: | -------------------: |
+| Pemukiman atau Lahan Terbangun |                   89.61% |               90.23% |                   88.32% |               87.77% |
+| Lahan Kosong                   |                   72.99% |               74.70% |                   50.55% |               52.66% |
+| Tubuh Air                      |                   89.10% |               73.75% |                   97.82% |               95.96% |
+| Pertanian                      |                   93.35% |               92.45% |                   88.03% |               86.77% |
+| Vegetasi                       |                   98.28% |               98.89% |                   97.15% |               97.77% |
+
 ---
 
 ## 6. Land-Cover Area Results
 
 Area was calculated using geodesic pixel area on the original EPSG:4326 grid.
 
-| Class | 2020 (ha) | 2023 (ha) | 2026 (ha) |
-|-------|----------:|----------:|----------:|
-| Pemukiman atau Lahan Terbangun | 22,605.34 | 29,287.52 | 33,545.76 |\n| Lahan Kosong | 9,046.24 | 11,440.43 | 11,506.77 |\n| Tubuh Air | 2,123.34 | 535.84 | 454.64 |\n| Pertanian | 61,964.48 | 51,566.64 | 47,283.92 |\n| Vegetasi | 242,795.91 | 245,704.88 | 245,744.22 |\n
+| Class                          |  2020 (ha) |  2023 (ha) |  2026 (ha) |
+| ------------------------------ | ---------: | ---------: | ---------: |
+| Pemukiman atau Lahan Terbangun |  22,605.34 |  29,287.52 |  33,545.76 |
+| Lahan Kosong                   |   9,046.24 |  11,440.43 |  11,506.77 |
+| Tubuh Air                      |   2,123.34 |     535.84 |     454.64 |
+| Pertanian                      |  61,964.48 |  51,566.64 |  47,283.92 |
+| Vegetasi                       | 242,795.91 | 245,704.88 | 245,744.22 |
+
 **Total study area:**
 
-- 2020: 338,535.31 ha
-- 2023: 338,535.31 ha
-- 2026: 338,535.31 ha
+* 2020: 338,535.31 ha
+* 2023: 338,535.31 ha
+* 2026: 338,535.31 ha
 
 ---
 
 ## 7. Land-Cover Change
 
-| Class | Change 2020–2023 (ha) | Change 2023–2026 (ha) |
-|-------|----------------------:|----------------------:|
-| Pemukiman atau Lahan Terbangun | 6,682.18 | 4,258.24 |\n| Lahan Kosong | 2,394.19 | 66.34 |\n| Tubuh Air | -1,587.50 | -81.20 |\n| Pertanian | -10,397.84 | -4,282.71 |\n| Vegetasi | 2,908.97 | 39.33 |\n
----
-
-## 8. Outputs
-
-The following outputs are generated by the analysis:
-
-- `Sarbagita_LandCover_2020.tif`
-- `Sarbagita_LandCover_2023.tif`
-- `Sarbagita_LandCover_2026.tif`
-- `Sarbagita_Accuracy_and_Change_Analysis.xlsx`
-- `Training_Sample/Sarbagita_Training_Sample.shp`
-- `Training_Sample/Sarbagita_Training_Sample.shx`
-- `Training_Sample/Sarbagita_Training_Sample.dbf`
-- `Training_Sample/Sarbagita_Training_Sample.prj`
+| Class                          | Change 2020–2023 (ha) | Change 2023–2026 (ha) |
+| ------------------------------ | --------------------: | --------------------: |
+| Pemukiman atau Lahan Terbangun |              6,682.18 |              4,258.24 |
+| Lahan Kosong                   |              2,394.19 |                 66.34 |
+| Tubuh Air                      |             -1,587.50 |                -81.20 |
+| Pertanian                      |            -10,397.84 |             -4,282.71 |
+| Vegetasi                       |              2,908.97 |                 39.33 |
 
 ---
 
-## 9. Limitations
+## 8. Projected 2026 Land-Cover Distribution
+
+The Markov-based projection produced the following projected pixel totals for 2026:
+
+| Class                          | Projected Pixels | Projected Area (ha) |
+| ------------------------------ | ---------------: | ------------------: |
+| Pemukiman atau Lahan Terbangun |        3,414,610 |           33,545.76 |
+| Lahan Kosong                   |        1,171,150 |           11,506.77 |
+| Tubuh Air                      |           46,272 |              454.64 |
+| Pertanian                      |        4,811,935 |           47,283.92 |
+| Vegetasi                       |       25,010,208 |          245,744.22 |
+
+The projected raster contains **34,454,175 pixels** across the study area.
+
+---
+
+## 9. Outputs
+
+The following outputs are included in the repository.
+
+### Classification Outputs
+
+* `Sarbagita_LandCover_2020.tif`
+* `Sarbagita_LandCover_2023.tif`
+* `Sarbagita_LandCover_2026.tif`
+
+### Analysis
+
+* `Sarbagita_Accuracy_and_Change_Analysis.xlsx`
+
+### Training Sample
+
+* `Training_Sample/Sarbagita_Training_Sample.shp`
+* `Training_Sample/Sarbagita_Training_Sample.shx`
+* `Training_Sample/Sarbagita_Training_Sample.dbf`
+* `Training_Sample/Sarbagita_Training_Sample.prj`
+* `Training_Sample/Sarbagita_Training_Sample.cpg`
+
+### Code and Documentation
+
+* `ILAPPS_GIS_Analyst_Final.ipynb`
+* `Sarbagita_LandCover_Projection.py`
+* `README.md`
+
+---
+
+## 10. Limitations
 
 1. The supplied imagery contains RGB bands only. Therefore, the analysis does not use full Sentinel-2 multispectral bands or spectral indices such as NDVI and NDWI.
 2. The classification results depend on the quality and representativeness of the supplied training samples.
@@ -171,18 +217,18 @@ The following outputs are generated by the analysis:
 
 ---
 
-## 10. Reproducibility
+## 11. Reproducibility
 
 The analysis was developed in Python using:
 
-- Python
-- NumPy
-- Pandas
-- GeoPandas
-- Rasterio
-- Scikit-learn
-- PyProj
-- OpenPyXL
+* Python
+* NumPy
+* Pandas
+* GeoPandas
+* Rasterio
+* Scikit-learn
+* PyProj
+* OpenPyXL
 
 Random Forest uses a fixed random state (`42`) to improve reproducibility.
 
@@ -190,7 +236,7 @@ All raster outputs preserve the original study-area extent and spatial reference
 
 ---
 
-## 11. Recommended Execution Order
+## 12. Recommended Execution Order
 
 1. Load input raster and training data.
 2. Extract training pixels.
@@ -208,3 +254,8 @@ All raster outputs preserve the original study-area extent and spatial reference
 14. Export accuracy and change analysis to Excel.
 15. Export the training sample shapefile.
 
+---
+
+## About
+
+GIS Analyst take-home case study: Python-based land-cover classification and 2026 projection for Sarbagita Agglomeration.
